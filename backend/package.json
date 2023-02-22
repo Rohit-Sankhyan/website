@@ -1,0 +1,30 @@
+{
+  "name": "webscape",
+  "version": "1.0.0",
+  "description": "This is my first Portfolio to display my work in node.js i will modify it in future",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js -e js,hbs"
+  },
+  "author": "Rohit",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "http": "^0.0.1-security",
+    "joi": "^17.7.0",
+    "joi-objectid": "^4.0.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "validator": "^13.9.0"
+  }
+}
