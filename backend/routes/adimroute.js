@@ -1,11 +1,9 @@
-const express = require("express")
-const app =  express.Router()
-app.get("/admin", (req, res) => {
-    // res.render("admin-login")
-    res.send("hello admin")
-});
-app.get("*", (req, res) => {
-    res.render("404")
-})
+const express = require("express");
+const admincontrol = require("../controllers/admincontrol");
+const router =  express.Router()
 
-module.exports = app;
+router.route("/").get(admincontrol.login)
+router.route("/home").get(admincontrol.homeadmin)
+
+
+module.exports = router;

@@ -3,13 +3,14 @@ const express = require("express")
 const path = require("path")
 const app = express()
 const mongoose = require("mongoose")
-const bodyparser = require("body-parser")
 const nodemailer = require("nodemailer")
 const port = process.env.PORT || 8000
 const hbs = require("hbs")
 require("./database/db")
 const contactData = require("./models/contact")
 const hireData = require("./models/hire")
+const userRoutes = require("./routes/userroutes")
+const adminRoutes = require("./routes/adimroute")
 // //adding database
 
 
@@ -20,20 +21,15 @@ const partial_Path = path.join(__dirname, "../public/templates/partials")
 // console.log(static_Path)
 
 //to set views engine
-const userRoutes = require("./routes/userroutes")
-const adminRoutes = require("./routes/adimroute")
 app.set("view engine", "hbs")
 app.set("views", template_Path)
 hbs.registerPartials(partial_Path)
 app.use(express.static(static_Path));
-app.use(userRoutes)
-app.use("/",adminRoutes)
+
 // template engine route
 
-
-
-
-
+app.use("/",userRoutes)
+app.use("/admin",adminRoutes)
 
 // Post method of form contact
 app.use(express.json())
@@ -111,6 +107,9 @@ app.post("/hire", async (req, res) => {
 
 });
 
+app.get("*",(req,res)=>{
+    res.render("404")
+})
 
 // listening to port
 

@@ -1,22 +1,13 @@
 const express = require("express")
-const app =  express.Router()
-app.get("/", (req, res) => {
-    res.render("index")
-});
-app.get("/about", (req, res) => {
-    res.render("about")
-});
-app.get("/contact", (req, res) => {
-    res.render("contact")
-});
-app.get("/service", (req, res) => {
-    res.render("service")
-});
-app.get("/hire", (req, res) => {
-    res.render("hire")
-})
-app.get("*", (req, res) => {
-    res.render("404")
-})
+const router =  express.Router()
+const usercontroller = require("../controllers/userscontrol")
+router.route("/").get(usercontroller.home)
+router.route("/about").get(usercontroller.about)
+router.route("/contact").get(usercontroller.contact)
+router.route("/service").get(usercontroller.service)
+router.route("/hire").get(usercontroller.hire)
 
-module.exports = app;
+
+
+module.exports = router
+
